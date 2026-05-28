@@ -1,0 +1,39 @@
+/*header*/
+
+#include "libft.h"
+
+int	ft_atoi(const char *str)
+{
+    int i;
+    int sign;
+    int res;
+
+    i = 0;
+    sign = 1;
+    res = 0;
+    while (str[i] >= 9 && str[i] <= 13)
+        i++;
+    if (str[i] == '-' || str[i] == '+')
+    {
+        if (str[i] == '-')
+            sign = - sign;
+        i++;
+    }
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        res = res * 10 + (str[i] - '0');
+        i++;
+    }
+    return (res * sign);
+}
+/*
+int main(int argc, char **argv)
+{
+    if (argc == 2)
+    {
+        printf("res : %d\n", ft_atoi(argv[1]));
+    }
+    return (0);
+}*/
+/*transforme un nombre donné en char(string) en int
+saute les espaces, check si le signe est -*/
