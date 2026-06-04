@@ -7,8 +7,6 @@ void ft_parse_flag(t_config *config, int argc, char **argv)
     int i;
 
     i = 1;
-    config->strategy = "adaptive";
-    config->bench_mode = 0;
     while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
     {
 
@@ -23,19 +21,63 @@ void ft_parse_flag(t_config *config, int argc, char **argv)
         else if (ft_strcmp(argv[i], "--adaptive") == 0)
             config->strategy = "adaptive";
         else 
-            exit_error(NULL, NULL);
+            error_exit(NULL, NULL);
         i++;
     }
     config->pos_index_pars = i;
 }
 
-
-
-t_stack ft_parse(t_config *config, int argc, char **argv)
+void    add_stack(char **split_arg, t_stack *stack_a)
 {
-    t_stack *stack;
+    t_node	*new;
+	int		i;
+	int		val;
 
+	i = 0;
+	while (split_arg[i])
+	{
+		val = ft_atoi(split_arg[i]);
+		if (ft_str_is_numeric(split_arg[i]) == 0 || ft_is_duplicate(val, stack_a) == 1)
+		{
+			free_split_tab(split_arg);
+			error_exit(stack_a, NULL);
+		}
+		new = ft_new_node(val);
+		if (!new)
+		{
+			free_split_tab(split_arg);
+			error_exit(stack_a, NULL);
+		}
+		ft_add_back(stack_a, new);
+		i++;
+	}
+	free_split_tab(split_arg);
+}
+
+void    ft_parse_numb(t_stack *stack_a, t_config *config, int argc, char **argv)
+{
+    int    i;
+    char **split_arg;
+
+    i = config->pos_index_pars;
+    while (i < argc)
+    {
+        split_arg = ft_split(argv[i], ' ');
+        if (!split_arg)
+            error_exit(stack_a, NULL);
+        if (split_arg[0] == NULL)
+        {
+            free(split_arg);
+            error_exit(stack_a, NULL);
+        }
+        add_stack(split_arg, stack_a);
+        i++;
+    }
+}
+
+
+void ft_parse(t_stack *stack_a, t_config *config, int argc, char **argv)
+{
     ft_parse_flag(config, argc, argv);
-    ft_parse_numb(stack,argc, argv);
-    return (stack);
+    ft_parse_numb(stack_a, config, argc, argv);
 }

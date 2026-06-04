@@ -28,3 +28,18 @@ void    error_exit(t_stack *a, t_stack *b)
     write(2, "Error\n", 6);
     exit(1);
 }
+
+void    free_split_tab(char **split_arg)
+{
+    int	i;
+
+	if (!split_arg)
+		return ;
+	i = 0;
+	while (split_arg[i])
+	{
+		free(split_arg[i]);
+		i++;
+	}
+	free(split_arg);
+}
