@@ -23,6 +23,8 @@ int	ft_str_is_numeric(char *str)
 	i = 0;
 	if (str[i] == '-')
 		i++;
+	if (str[i] == '\0')
+		return (0);
 	while (str[i])
 	{
 		if (!(str[i] >= '0' && str[i] <= '9'))
@@ -73,4 +75,31 @@ int	ft_is_duplicate(int val, t_stack *stack)
 		i++;
 	}
 	return (0);
+}
+
+int ft_is_valid_int(char *str)
+{
+    long    val;
+    int     i;
+    int     sign;
+
+    if (!ft_str_is_numeric(str))
+        return (0);
+    i = 0;
+    sign = 1;
+    if (str[i] == '-')
+    {
+        sign = -1;
+        i++;
+    }
+    val = 0;
+    while (str[i] >= '0' && str[i] <= '9')
+    {
+        val = val * 10 + (str[i] - '0');
+        i++;
+    }
+    val *= sign;
+    if (val > 2147483647 || val < -2147483648)
+        return (0);
+    return (1);
 }

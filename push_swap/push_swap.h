@@ -48,16 +48,19 @@ typedef struct s_config
 }				t_config;
 
 /*parseur*/
-void ft_parse(t_stack stack_a, t_config *config, int argc, char **argv);
+void ft_parse(t_stack *stack_a, t_config *config, int argc, char **argv);
 void ft_parse_flag(t_config *config, int argc, char **argv);
 void    ft_parse_numb(t_stack *stack_a, t_config *config, int argc, char **argv);
 
 /*utils*/
 int	ft_strcmp(char *s1, char *s2);
-char **ft_split(char const *s, char c);
 int	ft_str_is_numeric(char *str);
 int	ft_atoi(const char *str);
 int	ft_is_duplicate(int val, t_stack *stack);
+int     ft_is_valid_int(char *str);
+
+/*split*/
+char	**ft_split(char const *s, char c);
 
 /*error*/
 void    error_exit(t_stack *a, t_stack *b);
@@ -65,10 +68,8 @@ void free_stack(t_stack *stack);
 void    free_split_tab(char **split_arg);
 
 /*ininitialisation*/
-void    ft_init(t_stack **stack_a, t_config **config);
+void	ft_init_config(t_config *config, t_bench *stats);
 t_stack *init_stack(void);
-t_bench *init_bench(void);
-t_config    *init_config(void);
 t_node *ft_new_node(int content);
 
 /*mouvement stack*/

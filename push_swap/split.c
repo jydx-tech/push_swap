@@ -7,6 +7,8 @@ static int count_words(char *s, char c)
     int i;
     int count;
 
+    if (!s)
+        return (0);
     i = 0;
     count = 0;
     while (s[i])
@@ -14,10 +16,11 @@ static int count_words(char *s, char c)
         if (s[i] != c)
         {
             count++;
-            while (s[i] != c && s[i])
+            while (s[i] && s[i] != c)
                 i++;
         }
-        i++;
+        else
+            i++;
     }
     return (count);
 }
@@ -57,16 +60,11 @@ static char *split_word(char *s, char c, char **res, int j)
     word[i] = '\0';
     return (word);
 }
-
-char **ft_split(char const *s, char c)
+static void fill_res(char **res, char const *s, char c)
 {
-    char **res;
     int i;
     int j;
 
-    res = malloc(sizeof(char *) * (count_words((char *)s, c) + 1));
-    if (!res || !s)
-        return (NULL);
     i = 0;
     j = 0;
     while (s[i])
@@ -75,13 +73,28 @@ char **ft_split(char const *s, char c)
         {
             res[j] = split_word((char *)&s[i], c, res, j);
             if (!res[j])
-                return (NULL);
+                return ;
             j++;
-            while (s[i] != c && s[i])
+            while (s[i] && s[i] != c)
                 i++;
         }
-        i++;
+        else
+            i++;
     }
     res[j] = NULL;
+}
+
+char **ft_split(char const *s, char c)
+{
+    char **res;
+    int count;
+
+    if (!s)
+        return (NULL);
+    count = count_words((char *)s, c);
+    res = malloc(sizeof(char *) * (count + 1));
+    if (!res)
+        return (NULL);
+    fill_res(res, s, c);
     return (res);
 }

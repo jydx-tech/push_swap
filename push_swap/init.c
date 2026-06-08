@@ -14,56 +14,25 @@ t_stack *init_stack(void)
     stack->size = 0;
     return (stack);
 }
-t_bench *init_bench(void)
+void    ft_init_config(t_config *config, t_bench *stats)
 {
-    t_bench *bench;
-
-    bench = malloc(sizeof(t_bench));
-    if (!bench)
-        return (NULL);
-    bench->disorder = 0;
-    bench->count_ops = 0;
-    bench->sa = 0;
-    bench->sb = 0;
-    bench->ss = 0;
-    bench->pa = 0;
-    bench->pb = 0;
-    bench->ra = 0;
-    bench->rb = 0;
-    bench->rr = 0;
-    bench->rra = 0;
-    bench->rrb = 0;
-    bench->rrr = 0;
-    return (bench);
-}
-
-t_config    *init_config(void)
-{
-    t_config    *config;
-
-    config = malloc(sizeof(t_config));
-    if (!config)
-        return (NULL);
+    stats->disorder = 0;
+    stats->count_ops = 0;
+    stats->sa = 0;
+    stats->sb = 0;
+    stats->ss = 0;
+    stats->pa = 0;
+    stats->pb = 0;
+    stats->ra = 0;
+    stats->rb = 0;
+    stats->rr = 0;
+    stats->rra = 0;
+    stats->rrb = 0;
+    stats->rrr = 0;
     config->strategy = "adaptive";
-	config->bench_mode = 0;
-	config->pos_index_pars = 0;
-	config->stats = init_bench();
-    if (!config->stats)
-    {
-        free(config);
-        return (NULL);
-    }
-    return (config);
-}
-
-void    ft_init(t_stack **stack_a, t_config **config)
-{
-    *stack_a = init_stack();
-    if (!*stack_a)
-        error_exit(NULL, NULL);
-    *config = init_config();
-    if (!*config)
-        error_exit(NULL,NULL);
+    config->bench_mode = 0;
+    config->pos_index_pars = 0;
+    config->stats = stats;
 }
 
 t_node *ft_new_node(int content)
@@ -74,7 +43,7 @@ t_node *ft_new_node(int content)
     if (!node)
         return (NULL);
     node -> nbr = content;
-    node -> index = 0;
+    node -> index = -1;
 	node -> next = NULL;
 	node -> prev = NULL;
     return (node);
