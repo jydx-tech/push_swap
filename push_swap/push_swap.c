@@ -17,7 +17,7 @@ int main(int argc, char **argv)
         error_exit(NULL, NULL);
     ft_parse(stack_a, &config, argc, argv);
     /* test */
-    t_node  *current;
+    t_node  *current;/*
     printf("size: %d\n", stack_a->size);
     printf("strategy: %s\n", config.strategy);
     printf("bench: %d\n", config.bench_mode);
@@ -27,9 +27,25 @@ int main(int argc, char **argv)
     {
         printf("nbr: %d\n", current->nbr);
         current = current->next;
-    }
-   /*
+    }*/
+    /*test end*/
     ft_disorder(stack_a, &config);
+    if (stack_a->size <= 1 || config.stats->disorder == 0)
+    {
+        free_stack(stack_a);
+        return (0);
+    }
+   // printf("disorder: %f\n", config.stats->disorder);     /*test*/ 
+    ft_index_stack(stack_a);
+    ft_reverse_rotate(stack_a);
+    /*test*/
+    current = stack_a->top;
+    while (current)
+    {
+        printf("nbr: %d et index: %d\n", current->nbr, current->index);
+        current = current->next;
+    }
+    /*
     if (config->bench_mode == 1)
         ft_printbench(config);
     */

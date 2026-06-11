@@ -4,7 +4,6 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdarg.h>
 # include <stdio.h>
 
 typedef struct s_node
@@ -59,6 +58,9 @@ int	ft_atoi(const char *str);
 int	ft_is_duplicate(int val, t_stack *stack);
 int     ft_is_valid_int(char *str);
 
+/*utils_two*/
+void	ft_index_stack(t_stack *stack_a);
+
 /*split*/
 char	**ft_split(char const *s, char c);
 
@@ -74,5 +76,31 @@ t_node *ft_new_node(int content);
 
 /*mouvement stack*/
 void ft_add_back(t_stack *stack_a, t_node *node);
+void	ft_swap_two_first(t_stack *stack);
+void	ft_rotate(t_stack *stack);
+void	ft_reverse_rotate(t_stack *stack);
+void	ft_push(t_stack *stack_from, t_stack *stack_to);
+
+/*mvt_to_swap*/
+void    sa(t_stack *stack, t_config *config);
+void    sb(t_stack *stack, t_config *config);
+void    ss(t_stack *stack_a, t_stack *stack_b, t_config *config);
+
+/*mvt_to_rotate*/
+void    ra(t_stack *stack, t_config *config);
+void    rb(t_stack *stack, t_config *config);
+void    rr(t_stack *stack_a, t_stack *stack_b, t_config *config);
+
+/*mvt_to_reverse_rotate*/
+void    rra(t_stack *stack, t_config *config);
+void    rrb(t_stack *stack, t_config *config);
+void    rrr(t_stack *stack_a, t_stack *stack_b, t_config *config);
+
+/*mvt_to_push*/
+void    pa(t_stack *stack_a, t_stack *stack_b, t_config *config);
+void    pb(t_stack *stack_a, t_stack *stack_b, t_config *config);
+
+/*disorder*/
+void    ft_disorder(t_stack *stack_a, t_config *config);
 
 #endif

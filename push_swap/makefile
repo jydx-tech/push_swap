@@ -11,8 +11,14 @@ SRCS        = push_swap.c \
               init.c \
               parse.c \
               utils.c \
+              utils_two.c \
               split.c \
               mvt_stack.c \
+              mvt_to_swap.c \
+              mvt_to_rotate.c \
+              mvt_to_reverse_rotate.c \
+              mvt_to_push.c\
+			  disorder.c \
               error.c
 
 # Objets
