@@ -103,4 +103,9 @@ void    pb(t_stack *stack_a, t_stack *stack_b, t_config *config);
 /*disorder*/
 void    ft_disorder(t_stack *stack_a, t_config *config);
 
+/*sort_simple*/
+void    ft_sort_simple(t_stack *stack_a, t_stack *stack_b, t_config *config);
+void    ft_put_on_top(t_stack *stack, int pos, t_config *config);
+int ft_find_pos(t_stack *stack, int to_search);
+
 #endif
