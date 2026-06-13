@@ -11,7 +11,7 @@ int ft_find_pos(t_stack *stack, int to_search)
     current = stack->top;
     while (pos < stack->size)
     {
-        if (to_search >= current->index)
+        if (to_search == current->index)
             return (pos);
         pos++;
         current = current->next;
@@ -19,7 +19,7 @@ int ft_find_pos(t_stack *stack, int to_search)
     return (-1);
 }
 
-void    ft_put_on_top(t_stack *stack, int pos, t_config *config)
+void    ft_put_on_top_a(t_stack *stack, int pos, t_config *config)
 {
     if (pos < stack->size / 2)
     {
@@ -49,7 +49,7 @@ void    ft_sort_simple(t_stack *stack_a, t_stack *stack_b, t_config *config)
     while (stack_a->size)
     {
         pos = ft_find_pos(stack_a, i);
-        ft_put_on_top(stack_a, pos, config);
+        ft_put_on_top_a(stack_a, pos, config);
         pb(stack_a, stack_b, config);
         i++;
     }

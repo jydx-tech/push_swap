@@ -20,6 +20,7 @@ SRCS        = push_swap.c \
               mvt_to_push.c\
 			  disorder.c \
               sort_simple.c \
+              sort_medium.c \
               error.c
 
 # Objets

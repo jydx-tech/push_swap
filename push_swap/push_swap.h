@@ -60,6 +60,7 @@ int     ft_is_valid_int(char *str);
 
 /*utils_two*/
 void	ft_index_stack(t_stack *stack_a);
+int ft_size_chunk(t_stack *stack);
 
 /*split*/
 char	**ft_split(char const *s, char c);
@@ -105,7 +106,14 @@ void    ft_disorder(t_stack *stack_a, t_config *config);
 
 /*sort_simple*/
 void    ft_sort_simple(t_stack *stack_a, t_stack *stack_b, t_config *config);
-void    ft_put_on_top(t_stack *stack, int pos, t_config *config);
+void    ft_put_on_top_a(t_stack *stack, int pos, t_config *config);
 int ft_find_pos(t_stack *stack, int to_search);
+
+/*sort_medium*/
+void    ft_sort_medium(t_stack *stack_a, t_stack *stack_b, t_config *config);
+void    ft_sort_b_and_pa(t_stack *stack_a, t_stack *stack_b, t_config *config);
+void    ft_push_by_chunk(t_stack *stack_a, t_stack *stack_b, t_config *config);
+void    ft_put_on_top_b(t_stack *stack, int pos, t_config *config);
+int ft_find_pos_chunk(t_stack *stack, int min, int max);
 
 #endif

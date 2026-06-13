@@ -9,8 +9,10 @@ void    ft_sort(t_stack *stack_a, t_config *config)
     stack_b = init_stack();
     if (!stack_b)
         error_exit(stack_a, NULL);
-    if (ft_strcmp(config->strategy, "simple"))
+    if (ft_strcmp(config->strategy, "simple") == 0)
         ft_sort_simple(stack_a, stack_b, config);
+    else if (ft_strcmp(config->strategy, "medium") == 0)
+        ft_sort_medium(stack_a, stack_b, config);
 }
 
 int main(int argc, char **argv)
@@ -46,16 +48,23 @@ int main(int argc, char **argv)
         free_stack(stack_a);
         return (0);
     }
-    printf("disorder: %f\n", config.stats->disorder);     /*test*/ 
+   // printf("disorder: %f\n", config.stats->disorder);     /*test*/ 
     ft_index_stack(stack_a);
-    /*test*/
+    /*test
+    current = stack_a->top;
+    while (current)
+    {
+        printf("nbr: %d et index: %d\n", current->nbr, current->index);
+        current = current->next;
+    }*/
+    ft_sort(stack_a, &config);
+        /*test*/
     current = stack_a->top;
     while (current)
     {
         printf("nbr: %d et index: %d\n", current->nbr, current->index);
         current = current->next;
     }
-    ft_sort(stack_a, &config);
     /*
     if (config->bench_mode == 1)
         ft_printbench(config);

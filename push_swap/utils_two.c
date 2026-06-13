@@ -21,3 +21,10 @@ void    ft_index_stack(t_stack *stack_a)
         current = current->next;
     }
 }
+
+int ft_size_chunk(t_stack *stack)
+{
+    if (stack->size <= 100)
+        return (15);
+    return (35);
+}
