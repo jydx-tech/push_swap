@@ -13,6 +13,8 @@ void    ft_sort(t_stack *stack_a, t_config *config)
         ft_sort_simple(stack_a, stack_b, config);
     else if (ft_strcmp(config->strategy, "medium") == 0)
         ft_sort_medium(stack_a, stack_b, config);
+    else if (ft_strcmp(config->strategy, "complex") == 0)
+        ft_sort_complex(stack_a, stack_b, config);
 }
 
 int main(int argc, char **argv)
@@ -30,8 +32,8 @@ int main(int argc, char **argv)
         error_exit(NULL, NULL);
     ft_parse(stack_a, &config, argc, argv);
     /* test */
-    t_node  *current;/*
-    printf("size: %d\n", stack_a->size);
+    t_node  *current;
+   /* printf("size: %d\n", stack_a->size);
     printf("strategy: %s\n", config.strategy);
     printf("bench: %d\n", config.bench_mode);
     printf("pos_index_pars: %d\n", config.pos_index_pars);

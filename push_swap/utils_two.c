@@ -26,5 +26,5 @@ int ft_size_chunk(t_stack *stack)
 {
     if (stack->size <= 100)
         return (15);
-    return (35);
+    return (30);
 }

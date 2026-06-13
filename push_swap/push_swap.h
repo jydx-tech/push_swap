@@ -116,4 +116,7 @@ void    ft_push_by_chunk(t_stack *stack_a, t_stack *stack_b, t_config *config);
 void    ft_put_on_top_b(t_stack *stack, int pos, t_config *config);
 int ft_find_pos_chunk(t_stack *stack, int min, int max);
 
+/*sort_complex*/
+void    ft_sort_complex(t_stack *a, t_stack *b, t_config *config);
+
 #endif
