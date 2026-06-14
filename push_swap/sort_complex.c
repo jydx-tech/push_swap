@@ -29,6 +29,7 @@ void    ft_sort_complex(t_stack *stack_a, t_stack *stack_b, t_config *config)
 {
     int chunk;
 
+    config->type_strategy = "O(n log n)";
     chunk = ft_size_chunk(stack_a);
     push_all_to_b(stack_a,stack_b, chunk, config);
     ft_sort_b_and_pa(stack_a, stack_b, config);

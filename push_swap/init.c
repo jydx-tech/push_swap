@@ -29,7 +29,7 @@ void    ft_init_config(t_config *config, t_bench *stats)
     stats->rra = 0;
     stats->rrb = 0;
     stats->rrr = 0;
-    config->strategy = "adaptive";
+    config->strategy = "Adaptive";
     config->bench_mode = 0;
     config->pos_index_pars = 0;
     config->stats = stats;

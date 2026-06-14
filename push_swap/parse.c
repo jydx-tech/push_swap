@@ -12,13 +12,13 @@ void ft_parse_flag(t_config *config, int argc, char **argv)
         if (ft_strcmp(argv[i], "--bench") == 0)
             config->bench_mode = 1;
         else if (ft_strcmp(argv[i], "--simple") == 0)
-            config->strategy = "simple";
+            config->strategy = "Simple";
         else if (ft_strcmp(argv[i], "--medium") == 0)
-            config->strategy = "medium";
+            config->strategy = "Medium";
         else if (ft_strcmp(argv[i], "--complex") == 0)
-            config->strategy = "complex";
+            config->strategy = "Complex";
         else if (ft_strcmp(argv[i], "--adaptive") == 0)
-            config->strategy = "adaptive";
+            config->strategy = "Adaptive";
         else 
             error_exit(NULL, NULL);
         i++;

@@ -45,6 +45,7 @@ void    ft_sort_simple(t_stack *stack_a, t_stack *stack_b, t_config *config)
     int pos;
     int i;
 
+    config->type_strategy = "O(n²)";
     i = 0;
     while (stack_a->size)
     {

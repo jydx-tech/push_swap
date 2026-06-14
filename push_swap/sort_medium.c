@@ -85,6 +85,7 @@ void    ft_sort_b_and_pa(t_stack *stack_a, t_stack *stack_b, t_config *config)
 
 void    ft_sort_medium(t_stack *stack_a, t_stack *stack_b, t_config *config)
 {
+    config->type_strategy = "O(n√n)";
     ft_push_by_chunk(stack_a, stack_b, config);
     ft_sort_b_and_pa(stack_a, stack_b, config);
 }

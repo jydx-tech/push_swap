@@ -41,6 +41,7 @@ typedef struct s_bench
 typedef struct s_config
 {
 	char	*strategy;
+	char	*type_strategy;
 	int	bench_mode;
 	int	pos_index_pars;
 	t_bench	*stats;
@@ -118,5 +119,12 @@ int ft_find_pos_chunk(t_stack *stack, int min, int max);
 
 /*sort_complex*/
 void    ft_sort_complex(t_stack *a, t_stack *b, t_config *config);
+void	push_all_to_b(t_stack *stack_a, t_stack *stack_b, int step, t_config *config);
+
+/*print_bench*/
+void    ft_print_bench(t_config *config);
+
+/*printf_fd*/
+int	ft_printf_fd(int fd, const char *format, ...);
 
 #endif
